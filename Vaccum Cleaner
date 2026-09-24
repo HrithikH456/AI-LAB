@@ -1,0 +1,44 @@
+import time
+
+
+room_A_dirty = True
+room_B_dirty = True
+
+
+vacuum_location = 'A'
+
+print("Starting the vacuum cleaner...")
+print(f"Initial State -> Room A: {'Dirty' if room_A_dirty else 'Clean'}, Room B: {'Dirty' if room_B_dirty else 'Clean'}\n")
+
+# 2. Main cleaning loop
+# The vacuum will keep running until both rooms are clean
+while room_A_dirty or room_B_dirty:
+    print(f" Vacuum is currently in Room {vacuum_location}")
+   
+    # Process Room A
+    if vacuum_location == 'A':
+        if room_A_dirty:
+            print("Room A is dirty. Cleaning now...")
+            time.sleep(1)  # Simulates cleaning time
+            room_A_dirty = False
+            print("Room A is now clean!")
+        else:
+            print("Room A is already clean. Moving to Room B...")
+            time.sleep(1)  # Simulates movement time
+            vacuum_location = 'B'
+
+    # Process Room B
+    elif vacuum_location == 'B':
+        if room_B_dirty:
+            print(" Room B is dirty. Cleaning now...")
+            time.sleep(1)  # Simulates cleaning time
+            room_B_dirty = False
+            print("Room B is now clean!")
+        else:
+            print("Room B is already clean. Moving to Room A...")
+            time.sleep(1)  
+            vacuum_location = 'A'
+           
+    print("-" * 30)
+
+print("\n Done! Both Room A and Room B are completely clean.")
